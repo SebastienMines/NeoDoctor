@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="fr.stage.neodoctor.NightLight" >
+
+    <Switch
+        android:id="@+id/switchsmartmode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/smartmode" />
+
+    <ImageView
+        android:id="@+id/flavor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sound"
+        android:layout_below="@+id/switchsmartmode"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_action_name"
+        android:contentDescription="@string/flavorDesc" />
+
+    <ImageView
+        android:id="@+id/sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flavor"
+        android:layout_marginTop="30dp"
+        android:layout_toStartOf="@+id/switchsmartmode"
+        android:src="@android:drawable/ic_lock_silent_mode"
+        android:contentDescription="@string/volumeDesc" />
+
+    <ImageView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sound"
+        android:layout_below="@+id/sound"
+        android:layout_marginTop="28dp"
+        android:minHeight="32dp"
+        android:minWidth="32dp"
+        android:src="@android:drawable/presence_away"
+        android:contentDescription="@string/timerDesc" />
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/switchsmartmode"
+        android:layout_alignTop="@+id/flavor" />
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/sound"
+        android:layout_alignStart="@+id/seekBar1" />
+
+    <SeekBar
+        android:id="@+id/seekBar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/seekBar2"
+        android:layout_alignTop="@+id/timer" />
+
+    <TextView
+        android:id="@+id/current_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/play"
+        android:layout_below="@+id/play"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/current_artist"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/current_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/current_artist"
+        android:layout_below="@+id/current_artist"
+        android:text="@string/current_album"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/timer"
+        android:layout_below="@+id/timer"
+        android:layout_marginTop="29dp"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
+        android:src="@android:drawable/ic_media_play"
+        android:contentDescription="@string/playDesc" />
+
+    <TextView
+        android:id="@+id/current_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/play"
+        android:layout_centerHorizontal="true"
+        android:text="@string/current_music"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

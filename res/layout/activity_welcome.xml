@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="fr.stage.neodoctor.Welcome" >
+
+    <WebView
+        android:id="@+id/babystategif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <WebView
+        android:id="@+id/babystategifmini"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:clickable="true"
+        android:contentDescription="@string/headDesc"
+        android:minHeight="128dp"
+        android:minWidth="128dp"
+        android:onClick="toggleStateView"
+        android:src="@drawable/stateview" />
+
+    <TextView
+        android:id="@+id/baby_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:clickable="true"
+        android:onClick="toggleStateView"
+        android:text="@string/baby_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:minHeight="1dip" />
+
+    <TextView
+        android:id="@+id/nightlighttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/nightlight"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/nightlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/head"
+        android:layout_below="@+id/nightlighttext"
+        android:contentDescription="@string/nightlightDesc"
+        android:clickable="true"
+        android:onClick="nightlight"
+        android:minHeight="128dp"
+        android:minWidth="128dp"
+        android:src="@drawable/nightlight" />
+
+    <ImageView
+        android:id="@+id/details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:onClick="history"
+        android:contentDescription="@string/detailsDesc"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
+        android:src="@android:drawable/ic_menu_info_details" />
+
+    <ImageView
+        android:id="@+id/micro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/baby_name"
+        android:clickable="true"
+        android:contentDescription="@string/microDesc"
+        android:onClick="speak"
+        android:src="@drawable/micro"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/speaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/details"
+        android:layout_toEndOf="@+id/baby_name"
+        android:contentDescription="@string/speakerDesc"
+        android:onClick="listen"
+        android:src="@drawable/speaker"
+        android:visibility="gone" />
+
+</RelativeLayout>
