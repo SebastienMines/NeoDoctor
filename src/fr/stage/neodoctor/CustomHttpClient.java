@@ -73,4 +73,24 @@ public class CustomHttpClient {
             e.printStackTrace();
         }
     }
+    
+    //method to return values of request SELECT
+    public static String returnHttpRequest(String url,String method, List<NameValuePair> params){
+    	makeHttpRequest(url,method,params);
+    	try{
+ 	        BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+ 	        StringBuilder sb = new StringBuilder();
+ 	        String line = null;
+ 	        while ((line = reader.readLine()) != null) {
+ 	                sb.append(line + "\n");
+ 	        }
+ 	        is.close();
+ 	 
+ 	        String result=sb.toString();
+ 	        return result;
+    	}catch(Exception e){
+ 	        Log.e("log_tag", "Error converting result "+e.toString());
+    	}
+    	return null;
+    }
 }

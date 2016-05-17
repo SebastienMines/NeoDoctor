@@ -85,7 +85,7 @@ public class Connection extends Activity implements OnClickListener,ContextMenu 
 		}
 		if(v.getId()==R.id.mdpoublie){
 			Uri uri = Uri.parse("https://www.google.fr");
-			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+			Intent intent = new Intent(Connection.this, MdpForgot.class);
 			startActivity(intent);
 		}
 	}
@@ -99,6 +99,7 @@ public class Connection extends Activity implements OnClickListener,ContextMenu 
 		}
 		else if(test == true && this.firstConnect==true){
 			Intent intent = new Intent(Connection.this, FirstConnect.class);
+			intent.putExtra("login", this.email.getText().toString());
 			startActivity(intent);
 		}
 		else{
