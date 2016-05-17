@@ -34,7 +34,7 @@ public class Welcome extends Activity {
 		//dans l'application afin de déterminer l'état à afficher.
 		
 		//Pour l'instant, on fait comme si le résultat était: le bébé dort et tout va bien.
-		String etat = "worriedBaby";
+		String etat = "sleepingBaby";
 		
 		toggleState = false;
 		
