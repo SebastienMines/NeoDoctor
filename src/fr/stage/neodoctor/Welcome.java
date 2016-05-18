@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
-import android.webkit.WebView;
 import android.widget.*;
 
 public class Welcome extends Activity {
@@ -12,16 +11,13 @@ public class Welcome extends Activity {
 	//false > affichage mini | true > affichage complet
 	private boolean toggleState;
 	
-	private ImageView nightlight;
-	private ImageView micro;
-	private ImageView speaker;
-	
-	private ProgressBar progBar;
-	
-	private TextView nightlighttext;
-	
-	private WebView stateMini;
-	private WebView state;
+	private RelativeLayout layoutMini;
+	private RelativeLayout layoutMaxi;
+	private RelativeLayout layoutNightLight;
+	private RelativeLayout layoutMisc;
+
+	private ImageView babyHeadMini;
+	private ImageView babyHead;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,28 +25,57 @@ public class Welcome extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_welcome);
 		
+		//--------- déserialisation ----------
+		
+		layoutMini = (RelativeLayout) findViewById(R.id.layoutMini);
+		layoutMaxi = (RelativeLayout) findViewById(R.id.layoutMaxi);
+		layoutNightLight = (RelativeLayout) findViewById(R.id.layoutNightLight);
+		layoutMisc = (RelativeLayout) findViewById(R.id.layoutMisc);
+
+		babyHeadMini = (ImageView) findViewById(R.id.babyHeadMini);
+		babyHead = (ImageView) findViewById(R.id.babyHead);
+
+		toggleState = false;
+		
+		//------------ traitements ------------
+		
 		//12/05/16 by BONNAVAUD
 		//À faire: aller chercher les informations dans la base de données et les traiter
 		//dans l'application afin de déterminer l'état à afficher.
 		
 		//Pour l'instant, on fait comme si le résultat était: le bébé dort et tout va bien.
-		String etat = "sleepingBaby";
+		int etat = 1;
 		
-		toggleState = false;
+		switch(etat){//afficher l'état selon le résultat du traitement
 		
-		nightlight = (ImageView) findViewById(R.id.nightlight);
-		micro = (ImageView) findViewById(R.id.micro);
-		speaker = (ImageView) findViewById(R.id.speaker);
-		
-		progBar = (ProgressBar) findViewById(R.id.progressBar);
-		
-		nightlighttext = (TextView) findViewById(R.id.nightlighttext);
-		
-		stateMini = (WebView) findViewById(R.id.babystategifmini);
-		stateMini.loadUrl("file:///android_asset/"+etat+"Mini.gif");
-		
-		state = (WebView) findViewById(R.id.babystategif);
-		state.loadUrl("file:///android_asset/"+etat+".gif");
+			case(0):{//bracelet éteint ou aucune mesures
+				babyHeadMini.setImageResource(R.drawable.flavor);
+				babyHead.setImageResource(R.drawable.flavor);
+				break;
+			}
+			case(1):{//bébé dort
+				babyHeadMini.setImageResource(R.drawable.headasleep);
+				babyHead.setImageResource(R.drawable.headasleep);
+				layoutMini.setBackgroundResource(R.drawable.fondsleeping);
+				layoutMaxi.setBackgroundResource(R.drawable.fondsleeping);
+				break;
+			}
+			case(2):{//bébé est réveillé
+				babyHeadMini.setImageResource(R.drawable.headawake);
+				babyHead.setImageResource(R.drawable.headawake);
+				layoutMini.setBackgroundResource(R.drawable.fondawake);
+				layoutMaxi.setBackgroundResource(R.drawable.fondawake);
+				break;
+			}
+			case(3):{//bébé est réveillé anxieux
+				babyHeadMini.setImageResource(R.drawable.headanxious);
+				babyHead.setImageResource(R.drawable.headanxious);
+				break;
+			}
+			default:{//etat ne correspond à aucune valeur attendue, probablement une erreur de traitement
+				Toast.makeText(this, "Woops, something went wrong!", Toast.LENGTH_LONG).show();
+			}
+		}
 		
 	}
 	
@@ -59,28 +84,22 @@ public class Welcome extends Activity {
 		
 		if(toggleState){//on remplace l'affichage mini par l'affichage
 			
-			stateMini.setVisibility(View.GONE);
-			nightlight.setVisibility(View.GONE);
-			progBar.setVisibility(View.GONE);
-			nightlighttext.setVisibility(View.GONE);
+			layoutMini.setVisibility(View.GONE);
+			layoutMaxi.setVisibility(View.VISIBLE);
+			layoutNightLight.setVisibility(View.GONE);
+			layoutMisc.setVisibility(View.VISIBLE);
 			
-			state.setVisibility(View.VISIBLE);
-			micro.setVisibility(View.VISIBLE);
-			speaker.setVisibility(View.VISIBLE);
-			
+			//on indique qu'on a désormais l'affichage
 			toggleState=false;
 		}
 		else{//on remplace l'affichage par l'affichage mini
 			
-			state.setVisibility(View.GONE);
-			micro.setVisibility(View.GONE);
-			speaker.setVisibility(View.GONE);
-			
-			nightlight.setVisibility(View.VISIBLE);
-			progBar.setVisibility(View.VISIBLE);
-			stateMini.setVisibility(View.VISIBLE);
-			nightlighttext.setVisibility(View.VISIBLE);
-			
+			layoutMini.setVisibility(View.VISIBLE);
+			layoutMaxi.setVisibility(View.GONE);
+			layoutNightLight.setVisibility(View.VISIBLE);
+			layoutMisc.setVisibility(View.GONE);
+
+			//on indique qu'on a désormais l'affichage mini
 			toggleState=true;
 		}
 	}
@@ -93,18 +112,51 @@ public class Welcome extends Activity {
 		
 	}
 	
-	public void nightlight(View v){		
-		Intent in = new Intent(Welcome.this, NightLight.class);
-		this.startActivity(in);
+	public void smell(View v){
+		
+	}
+	
+	public void nightlight(View v){
+		
+		Intent intentNightLight = new Intent(Welcome.this, NightLight.class);
+		
+		this.startActivity(intentNightLight);
 	}
 	
 	public void history(View v){
 		
-		Intent in = new Intent(this, History.class);
+		Intent intentHistory = new Intent(this, History.class);
 		
-		this.startActivity(in);
+		this.startActivity(intentHistory);
 		
 	}
+	
+	
+	@Override
+	public void onSaveInstanceState(Bundle savedInstanceState) {
+
+	  // Save UI state changes to the savedInstanceState.   
+	  // This bundle will be passed to onCreate if the process is  
+	  // killed and restarted.
+
+	  savedInstanceState.putBoolean("toggleState", toggleState);
+	  super.onSaveInstanceState(savedInstanceState);  
+	}  
+	//onRestoreInstanceState  
+	    @Override  
+	public void onRestoreInstanceState(Bundle savedInstanceState) {  
+	  super.onRestoreInstanceState(savedInstanceState);  
+	  // Restore UI state from the savedInstanceState.  
+	  // This bundle has also been passed to onCreate.  
+	  toggleState = savedInstanceState.getBoolean("toggleState");
+	  if(toggleState)
+		  toggleState = false;
+	  else
+		  toggleState = true;
+	  this.toggleStateView(null);
+	}
+	
+	
 	
 	
 	@Override

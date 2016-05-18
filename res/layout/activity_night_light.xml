@@ -23,7 +23,7 @@
         android:layout_alignStart="@+id/sound"
         android:layout_below="@+id/switchsmartmode"
         android:layout_marginTop="28dp"
-        android:src="@drawable/ic_action_name"
+        android:src="@drawable/flavor"
         android:contentDescription="@string/flavorDesc" />
 
     <ImageView
@@ -33,8 +33,10 @@
         android:layout_below="@+id/flavor"
         android:layout_marginTop="30dp"
         android:layout_toStartOf="@+id/switchsmartmode"
-        android:src="@android:drawable/ic_lock_silent_mode"
-        android:contentDescription="@string/volumeDesc" />
+        android:contentDescription="@string/volumeDesc"
+        android:minHeight="29dp"
+        android:minWidth="29dp"
+        android:src="@android:drawable/ic_lock_silent_mode" />
 
     <ImageView
         android:id="@+id/timer"
@@ -49,25 +51,31 @@
         android:contentDescription="@string/timerDesc" />
 
     <SeekBar
-        android:id="@+id/seekBar1"
+        android:id="@+id/flavorSeek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/switchsmartmode"
-        android:layout_alignTop="@+id/flavor" />
+        android:layout_alignTop="@+id/flavor"
+        android:max="100"
+        android:progress="0" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/soundSeek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/sound"
-        android:layout_alignStart="@+id/seekBar1" />
+        android:layout_alignStart="@+id/flavorSeek"
+        android:max="100"
+        android:progress="0" />
 
     <SeekBar
-        android:id="@+id/seekBar3"
+        android:id="@+id/timerSeek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/seekBar2"
-        android:layout_alignTop="@+id/timer" />
+        android:layout_alignStart="@+id/soundSeek"
+        android:layout_alignTop="@+id/timer"
+        android:max="100"
+        android:progress="0" />
 
     <TextView
         android:id="@+id/current_artist"
@@ -109,5 +117,17 @@
         android:layout_centerHorizontal="true"
         android:text="@string/current_music"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/volumelow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/timer"
+        android:layout_alignStart="@+id/sound"
+        android:layout_alignEnd="@+id/sound"
+        android:layout_alignTop="@+id/sound"
+        android:contentDescription="@string/volumeDesc"
+        android:src="@drawable/volumelow"
+        android:visibility="gone"/>
 
 </RelativeLayout>
