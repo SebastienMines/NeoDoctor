@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
-    <!-- Connexion -->
+
     <string name="app_name">NeoDoctor</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="creerCompte"><a href="https://www.google.fr">Créer un compte</a></string>
     <string name="mdpOublie"><a href="https://www.google.fr">Mot de passe oublié</a></string>
@@ -12,8 +10,6 @@
     <string name="mdp">Mot de passe</string>
     <string name="seConnecter">Se Connecter</string>
     
-    
-    <!-- Création Compte -->
     <string name="name">Nom</string>
     <string name="surname">Prenom</string>
     <string name="condition">En cliquant sur "Créer un compte", vous confirmez avoir lu, compris et accepter les 
@@ -23,23 +19,14 @@
     <string name="online">En ligne</string>
     <string name="felicitation">Merci pour votre inscription.</string>
     
-    
-    <!-- Mdp Oublié -->
-    <string name="infos">Veuillez entrer votre adresse e-mail pour pouvoir réinitialiser votre mot de passe</string>
-    <string name="reinitialiser">Réinitialiser</string>
-    
-    
-    <!-- Welcome -->
-    <string name="baby_name">Sasha</string>
+    <string name="monitor">Monitor</string>
    	<string name="nightlight">NightLight</string>
    	<string name="headDesc">Baby state preview</string>
    	<string name="nightlightDesc">NightLight icon</string>
    	<string name="detailsDesc">History + alertes icon</string>
    	<string name="microDesc">Micro icon (talk to baby)</string>
    	<string name="speakerDesc">Speaker icon (listen to baby)</string>
-   	
    
-   	<!-- NightLight -->
    	<string name="title_activity_night_light">NightLight</string>
    	<string name="smartmode">Smart Mode</string>
    	<string name="current_music">Music playing</string>
@@ -52,7 +39,6 @@
    	<string name="playDesc">Play icon</string>
    
    
-   	<!-- History -->
-   	<string name="title_activity_history">History</string>
+   <string name="title_activity_history">History</string>
 
 </resources>

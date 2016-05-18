@@ -2,11 +2,15 @@ package fr.stage.neodoctor;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.Window;
+import android.view.*;
+import android.widget.*;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class NightLight extends Activity {
+	
+	public SeekBar flavor;	
+	public SeekBar sound;	
+	public SeekBar timer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -14,11 +18,29 @@ public class NightLight extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_night_light);
 		
-		
-		
-		
-		
-		
+		flavor.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
+
+			@Override
+			public void onProgressChanged(SeekBar bar, int value, boolean bool) {
+				// TODO Auto-generated method stub
+				if(value==0){
+					
+				}
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});;
 	}
 	
 	@Override

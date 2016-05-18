@@ -1,117 +1,171 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="fr.stage.neodoctor.Welcome" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" >
+              
+    <RelativeLayout
+        android:id="@+id/layoutMini"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:visibility="visible"
+        android:background="@drawable/fondsleeping" >
 
-    <WebView
-        android:id="@+id/babystategif"
+   		<ImageView
+        	android:id="@+id/babyHeadMini"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_centerHorizontal="true"
+        	android:layout_centerVertical="true"
+        	android:clickable="true"
+        	android:contentDescription="@string/headDesc"
+        	android:minHeight="128dp"
+        	android:minWidth="128dp"
+        	android:onClick="toggleStateView"
+        	android:src="@drawable/stateview" />
+
+        <TextView
+        	android:id="@+id/monitor"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentTop="true"
+        	android:layout_centerHorizontal="true"
+        	android:layout_marginTop="28dp"
+        	android:clickable="true"
+        	android:onClick="toggleStateView"
+        	android:text="@string/monitor"
+        	android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/layoutMaxi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <WebView
-        android:id="@+id/babystategifmini"
+        android:visibility="gone"
+        android:background="@drawable/fondsleeping" >
+        
+        <TextView
+			android:id="@+id/monitor2"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentTop="true"
+        	android:layout_centerHorizontal="true"
+        	android:layout_marginTop="28dp"
+        	android:clickable="true"
+        	android:onClick="toggleStateView"
+        	android:text="@string/monitor"
+        	android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+		<ImageView
+    		android:id="@+id/babyHead"
+	    	android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+        	android:layout_centerHorizontal="true"
+        	android:layout_centerVertical="true"
+    		android:clickable="true"
+	    	android:contentDescription="@string/headDesc"
+    		android:minHeight="128dp"
+	    	android:minWidth="128dp"
+    		android:onClick="toggleStateView"
+	    	android:src="@drawable/stateview" />
+	
+    </RelativeLayout>
+    
+    
+    
+    <RelativeLayout
+        android:id="@+id/layoutNightLight"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:visibility="visible">
 
-    <ImageView
-        android:id="@+id/head"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
-        android:clickable="true"
-        android:contentDescription="@string/headDesc"
-        android:minHeight="128dp"
-        android:minWidth="128dp"
-        android:onClick="toggleStateView"
-        android:src="@drawable/stateview" />
+    	<TextView
+        	android:id="@+id/nightlighttext"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_centerHorizontal="true"
+        	android:layout_alignParentTop="true"
+        	android:layout_marginTop="20dp"
+        	android:text="@string/nightlight"
+        	android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/baby_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:clickable="true"
-        android:onClick="toggleStateView"
-        android:text="@string/baby_name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    	<ImageView
+        	android:id="@+id/nightlight"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_centerHorizontal="true"
+        	android:layout_centerVertical="true"
+        	android:contentDescription="@string/nightlightDesc"
+       		android:clickable="true"
+        	android:onClick="nightlight"
+        	android:minHeight="128dp"
+        	android:minWidth="128dp"
+        	android:src="@drawable/nightlight" />
+        
+    </RelativeLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:minHeight="1dip" />
+    <RelativeLayout
+    	android:id="@+id/layoutMisc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:visibility="visible" >
 
-    <TextView
-        android:id="@+id/nightlighttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="@string/nightlight"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    	<ImageView
+        	android:id="@+id/details"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentBottom="true"
+        	android:layout_alignParentEnd="true"
+        	android:clickable="true"
+        	android:onClick="history"
+        	android:contentDescription="@string/detailsDesc"
+        	android:minHeight="48dp"
+        	android:minWidth="48dp"
+        	android:src="@android:drawable/ic_menu_info_details" />
 
-    <ImageView
-        android:id="@+id/nightlight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/head"
-        android:layout_below="@+id/nightlighttext"
-        android:contentDescription="@string/nightlightDesc"
-        android:clickable="true"
-        android:onClick="nightlight"
-        android:minHeight="128dp"
-        android:minWidth="128dp"
-        android:src="@drawable/nightlight" />
+    	<ImageView
+    	    android:id="@+id/speaker"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignParentBottom="true"
+        	android:layout_centerHorizontal="true"
+    	    android:contentDescription="@string/speakerDesc"
+    	    android:onClick="listen"
+    	    android:src="@drawable/speaker"
+    	    android:visibility="visible" />
 
-    <ImageView
-        android:id="@+id/details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:clickable="true"
-        android:onClick="history"
-        android:contentDescription="@string/detailsDesc"
-        android:minHeight="48dp"
-        android:minWidth="48dp"
-        android:src="@android:drawable/ic_menu_info_details" />
+    	<ImageView
+    	    android:id="@+id/micro"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignParentBottom="true"
+    	    android:layout_toStartOf="@+id/speaker"
+    	    android:clickable="true"
+    	    android:contentDescription="@string/microDesc"
+    	    android:onClick="speak"
+    	    android:src="@drawable/micro"
+    	    android:visibility="visible" />
 
-    <ImageView
-        android:id="@+id/micro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/baby_name"
-        android:clickable="true"
-        android:contentDescription="@string/microDesc"
-        android:onClick="speak"
-        android:src="@drawable/micro"
-        android:visibility="gone" />
+    	<ImageView
+    	    android:id="@+id/flavor"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignBottom="@+id/details"
+    	    android:layout_alignTop="@+id/details"
+    	    android:layout_toEndOf="@+id/speaker"
+    	    android:clickable="true"
+    	    android:contentDescription="@string/flavorDesc"
+    	    android:onClick="smell"
+    	    android:paddingStart="10dp"
+    	    android:paddingEnd="10dp"
+    	    android:src="@drawable/flavor"
+    	    android:visibility="visible" />
+        
+    </RelativeLayout>
+    
+</LinearLayout>
 
-    <ImageView
-        android:id="@+id/speaker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/details"
-        android:layout_toEndOf="@+id/baby_name"
-        android:contentDescription="@string/speakerDesc"
-        android:onClick="listen"
-        android:src="@drawable/speaker"
-        android:visibility="gone" />
-
-</RelativeLayout>
